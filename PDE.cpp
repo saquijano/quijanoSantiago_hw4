@@ -29,8 +29,7 @@ int main()
 	double ver1=0;
 	double hor1=0;
 	double prom=0;
-	cout<<","<<nu<<","<<dx<<endl;
-	int saltos=30000;
+	int saltos=50000;
 	double prome[saltos];
 	//condiciones iniciales
 
@@ -51,7 +50,7 @@ int main()
 		}
 	}
 
-	// cerrado
+	// extremos fijos
 	ofstream iniciales;
 	iniciales.open("iniciales.txt");
 	for(int i=0;i<N;i++)
@@ -110,7 +109,6 @@ while(tiempo<(saltos*dt))
 	}
 	
 	prome[z]=(prom/(n*n));
-	//cout<<prome[z]<<endl;
 	tiempo=tiempo+dt;
 	z=z+1;
 	if (z==2500)
@@ -131,7 +129,7 @@ while(tiempo<(saltos*dt))
 		cerradas1.close();
 	}
 
-	if (z==(saltos-5))
+	if (z==(5000))
 	{
 		ofstream cerradas2;
 		cerradas2.open("cerradas2.txt");
@@ -147,6 +145,23 @@ while(tiempo<(saltos*dt))
 			}
 		}
 		cerradas2.close();
+	}
+	if (z==(saltos-3))
+	{
+		ofstream cerradasFin;
+		cerradasFin.open("cerradasFin.txt");
+		for(int i=0;i<N;i++)
+		{
+			for(int j=0;j<N;j++)
+			{
+				cerradasFin<<pasa[i][j]<<", ";
+				if(j==(N-1))
+				{
+					cerradasFin<<pasa[i][j]<<endl;
+				}
+			}
+		}
+		cerradasFin.close();
 	}
 }
 	ofstream promFijos;
@@ -175,6 +190,20 @@ while(tiempo<(saltos*dt))
 			}
 		}
 	}
+	ofstream inicialesLib;
+	inicialesLib.open("inicialesLib.txt");
+	for(int i=0;i<N;i++)
+	{
+		for(int j=0;j<N;j++)
+		{
+			inicialesLib<<pasa[i][j]<<",";
+			if(j==(N-1))
+			{
+				inicialesLib<<pasa[i][j]<<endl;
+			}
+		}
+	}
+	inicialesLib.close();
 
 	tiempo=0;
 	z=0;
@@ -231,7 +260,6 @@ while(tiempo<(saltos*dt))
 		}
 	}
 	prome[z]=prom/(n*n);
-	cout<<prome[z]<<endl;
 	tiempo=tiempo+dt;
 	z=z+1;
 	if (z==8000)
@@ -252,7 +280,7 @@ while(tiempo<(saltos*dt))
 		libres1.close();
 	}
 
-	if (z==(saltos-5))
+	if (z==(saltos/2))
 	{
 		ofstream libres2;
 		libres2.open("libres2.txt");
@@ -268,6 +296,25 @@ while(tiempo<(saltos*dt))
 			}
 		}
 		libres2.close();
+	}
+//ultima grafica
+
+	if (z==(saltos-3))
+	{
+		ofstream libresFin;
+		libresFin.open("libresFin.txt");
+		for(int i=0;i<N;i++)
+		{
+			for(int j=0;j<N;j++)
+			{
+				libresFin<<pasa[i][j]<<", ";
+				if(j==(N-1))
+				{
+					libresFin<<pasa[i][j]<<endl;
+				}
+			}
+		}
+		libresFin.close();
 	}
 }
 /// guardo mis promedios en un txt
@@ -297,6 +344,20 @@ while(tiempo<(saltos*dt))
 			}
 		}
 	}
+	ofstream inicialesPer;
+	inicialesPer.open("inicialesPer.txt");
+	for(int i=0;i<N;i++)
+	{
+		for(int j=0;j<N;j++)
+		{
+			inicialesPer<<pasa[i][j]<<",";
+			if(j==(N-1))
+			{
+				inicialesPer<<pasa[i][j]<<endl;
+			}
+		}
+	}
+	inicialesPer.close();
 
 	tiempo=0;
 	z=0;
@@ -353,7 +414,6 @@ while(tiempo<(saltos*dt))
 		}
 	}
 	prome[z]=prom/(n*n);
-	cout<<prome[z]<<endl;
 	tiempo=tiempo+dt;
 	z=z+1;
 	if (z==8000)
@@ -374,7 +434,7 @@ while(tiempo<(saltos*dt))
 		periodica1.close();
 	}
 
-	if (z==(saltos-5))
+	if (z==(saltos/2))
 	{
 		ofstream periodica2;
 		periodica2.open("periodica2.txt");
@@ -390,6 +450,24 @@ while(tiempo<(saltos*dt))
 			}
 		}
 		periodica2.close();
+	}
+	
+	if (z==(saltos-3))
+	{
+		ofstream periodicaFin;
+		periodicaFin.open("periodicaFin.txt");
+		for(int i=0;i<N;i++)
+		{
+			for(int j=0;j<N;j++)
+			{
+				periodicaFin<<pasa[i][j]<<", ";
+				if(j==(N-1))
+				{
+					periodicaFin<<pasa[i][j]<<endl;
+				}
+			}
+		}
+		periodicaFin.close();
 	}
 }
 /// guardo mis promedios en un txt
