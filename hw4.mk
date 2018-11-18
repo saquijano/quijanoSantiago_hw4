@@ -1,19 +1,21 @@
-resultados_hw4.pdf: ode1.pdf ode2.pdf pde1.pdf resultados_hw4.tex
-	pdflatex resultados.tex
+Resultados_hw4.pdf: traye45.pdf iniciales.pdf resultados_hw4.tex
+	pdflatex Resultados_hw4.tex
 
-ode1.pdf: datosOde.dat Plots_hw4.py
+traye45.pdf: 45grad.txt  Plots_hw4.py
 	python3 Plots_hw4.py
 
-ode2.pdf: datosOde.dat Plots_hw4.py
-	python3 Plots_hw4.py
+resultados_hw4.tex: traye45.pdf
 
-datosOde.dat: ODE.cpp
+45grad.txt: ODE.cpp
 	g++ ODE.cpp -o ODE.out
-	./ODE.out>>datosOde.dat
+	./ODE.out
 
-pde.pdf: datosPDE.dat Plots_hw4.py
+iniciales.pdf: iniciales.txt Plots_hw4.py
 	python3 Plots_hw4.py
 
-datosPde.dat: PDE.cpp
+iniciales.txt: PDE.cpp
 	g++ PDE.cpp -o PDE.out
-	./PDE.out>>datosPde.dat
+	./PDE.out
+clean:
+	rm *.txt
+	rm *.pdf
