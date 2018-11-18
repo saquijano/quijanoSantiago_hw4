@@ -1,0 +1,144 @@
+\documentclass[12pt]{article}
+\usepackage{graphicx}
+\author{Santiago Quijano}
+\title{Tarea 4, metodos computacionales}
+
+\begin{document}
+\maketitle
+
+\section{ODE}
+En este trabajo se modelo el movimiento parabolico con fricción proporcional a $v^2$. Inicialmente se tomo el angulo que genera la maxima distancia horizontal, 45°. 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{traye45.pdf}
+\caption{Trayectoria a 45 grados}
+\label{Fig.}
+\end{figure}
+
+Luego se realizo este mismo modelo con angulos entre 10 y 70 variando de 10 en 10, para observar para cual angulo se obtenia la mayor distancia horizontal. La mayor distancia se obtuvo con  $20°$, 5.18m
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{trayecTodas.pdf}
+\caption{Trayectoria del proyectil a varios grados}
+\label{Fig.}
+\end{figure}
+
+\section{PDE}
+
+Se modelo una placa de calcita de 50cm con una barra centrada de 5cm de radio con temperatura fija de $100C$. Los cambios de temperatura sufridos por la placa se modelaron y dos instantes de tiempo, asi como la condición inicial se muestran para tres casos distintos de frontera.
+
+\subsection{Extremos fijos}
+
+El primer caso describe una placa cuyos bordes se encuentra a una temperatura constante de 10 grados. La condición inicial es la de una barra a 100 grados dentro de una placa de temperatura constante de 10 grados.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{iniciales.pdf}
+\caption{Disposición inicial extremos fijos}
+\label{Fig.}
+\end{figure}
+
+
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{fijos1.pdf}
+\caption{Instante 1: extremos fijos}
+\label{Fig.}
+\end{figure}
+
+Se realizaron 50000 saltos de tiempo de 0.00003seg para modelar los cambios de temperatura. Una grafica se toma luego de 0.075seg y la otra luego de 0.15seg y 1.5seg. En estas tres graficas se puede observar que la placa va a tender a formar un gradiente continuo entre el interior a 100 grados y los extremos a 10 grados. Se llega a una forma de cono con pendiente continua.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{fijos2.pdf}
+\caption{Instante 2: extremos fijos}
+\label{Fig.}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{cerradasFin.pdf}
+\caption{Estado final extremos fijos}
+\label{Fig.}
+\end{figure}
+
+\subsection{Extremos libres}
+
+La condición inicial de este caso es igual a la de extremos fijos, una barra de 100 grados dentro de un placa a 10 grados. Las condiciones de frontera cambian, en este caso los extremos se pueden calentar. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{inicialesLib.pdf}
+\caption{Disposición inicial: extremos libres}
+\label{Fig.}
+\end{figure}
+Las tres graficas muestran la transición y calentamiento de la placa. Esta va a tender a la temperatura de la barra. La forma de las graficas es igual despues de que los cambios de temperatura llegen a los extremos, antes de esto se comporta igual a la placa con extremos libres. Luego, la temperatura sube más rapido en los extremos hasta que sube casi uniformemente cuando se acerca a 100 grados.
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{libres1.pdf}
+\caption{Instante 1: extremos libres}
+\label{Fig.}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{libres2.pdf}
+\caption{Instante 2: extremos libres}
+\label{Fig.}
+\end{figure}
+
+La placa en su estado final se acerca mucho a la temperatura de la barra. Se ve que su temperatura es casi constante en todo la placa
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{libresFin.pdf}
+\caption{Estado final extremos libres}
+\label{Fig.}
+\end{figure}
+
+\subsection{Placa periodica}
+
+Presenta las misma condiciones iniciales. El conjunto, placa-barra, se asume periodico, el modelo se construye suponiendo que la placa tiene otras placas a sus costados y hay transferencia de energia entre ellas.  
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{inicialesPer.pdf}
+\caption{Disposición inicial: placa periodica}
+\label{Fig.}
+\end{figure}
+
+El comportamiento, debido a la simetria de las placas, es igual al de una placa con extremos libres. La temperatura va a aumentar y tender a la temperatura de la barra. Los cambios de temperatura se hacen más pequeños cuando más cerca se encuentra la temperatura de la calcita a la de la barra. 
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{periodica1.pdf}
+\caption{Instante 1: placa periodica}
+\label{Fig.}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{periodica2.pdf}
+\caption{Instante 2: placa periodica}
+\label{Fig.}
+\end{figure}
+La placa en su estado final se acerca mucho a la temperatura de la barra. Se ve que su temperatura es casi constante en todo la placa. Esto tiene sentido debido a que se esta calentando desde todas las direcciones. Es extraño que la placa se caliente igual de rapido a la placa con extremos libres.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{periodicaFin.pdf}
+\caption{Instante final placa periodica}
+\label{Fig.}
+\end{figure}
+
+\subsection{Temperatura promedio de la placa}
+La temperatura promedio de la placa se registro para todos los instantes durante el calientamiento de la placa. Se observa que la respuesta a la transferencia de energia es igual para las tres disposiciones durante los primeros instantes. Luego la temperatura de la placa con extremos fijos aumenta su temperatura de forma asintotica a 33 grados. Los otros dos arreglos se comportan de la misma manera incluso en la asintota que se forma en 100 grados.   
+\begin{figure}[h!]
+\centering
+\includegraphics[scale=0.5]{TempPromedio.pdf}
+\caption{Variacion de la temperatura promedio en los tres casos}
+\label{Fig.}
+\end{figure}
+
+\end{document}
