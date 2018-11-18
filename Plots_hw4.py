@@ -76,8 +76,10 @@ for i in range(len(angulosx)):
 ###inicia PDE
 
 #iniciales de fijos
-iniciales=np.genfromtxt("iniciales.txt",delimiter=",")
+
 ## como graficar en 3d lo saque de https://www.youtube.com/watch?v=N5k05yuEw-0
+
+iniciales=np.genfromtxt("iniciales.txt",delimiter=",")
 dis=np.shape(iniciales)
 yo=np.linspace(0,50,dis[0])
 xo=np.linspace(0,50,dis[1])
@@ -166,6 +168,22 @@ ax.set_zlabel("T(C°)")
 plt.savefig("fijos2.pdf")
 
 
+##extremos fijos final
+cerradasFin=np.genfromtxt("cerradasFin.txt",delimiter=",")
+
+yo=np.linspace(0,50,np.shape(cerradasFin)[0])
+xo=np.linspace(0,50,np.shape(cerradasFin)[1])
+xo, yo=np.meshgrid(xo,yo)
+
+fig=plt.figure()
+ax=fig.add_subplot(1,1,1, projection='3d')
+ax.plot_wireframe(xo,yo,cerradasFin)
+ax.set_zlim(0,100)
+plt.title("Condicion final extremos fijos")
+ax.set_xlabel("x(m)")
+ax.set_ylabel("y(m)")
+ax.set_zlabel("T(C°)")
+plt.savefig("cerradasFin.pdf")
 ##extremos libres 1
 libres1=np.genfromtxt("libres1.txt",delimiter=",")
 yo=np.linspace(0,50,np.shape(libres1)[0])
@@ -198,6 +216,23 @@ ax.set_xlabel("x(m)")
 ax.set_ylabel("y(m)")
 ax.set_zlabel("T(C°)")
 plt.savefig("libres2.pdf")
+
+##extremos libres final
+libresFin=np.genfromtxt("libresFin.txt",delimiter=",")
+
+yo=np.linspace(0,50,np.shape(libresFin)[0])
+xo=np.linspace(0,50,np.shape(libresFin)[1])
+xo, yo=np.meshgrid(xo,yo)
+
+fig=plt.figure()
+ax=fig.add_subplot(1,1,1, projection='3d')
+ax.plot_wireframe(xo,yo,libresFin)
+ax.set_zlim(0,100)
+plt.title("Condicion final extremos libres")
+ax.set_xlabel("x(m)")
+ax.set_ylabel("y(m)")
+ax.set_zlabel("T(C°)")
+plt.savefig("libresFin.pdf")
 
 ##extremos periodicos 1
 periodica1=np.genfromtxt("periodica1.txt",delimiter=",")
@@ -233,6 +268,24 @@ ax.set_ylabel("y(m)")
 ax.set_zlim(0,100)
 ax.set_zlabel("T(C°)")
 plt.savefig("periodica2.pdf")
+
+##condicion final placa periodica
+
+periodicaFin=np.genfromtxt("periodicaFin.txt",delimiter=",")
+
+yo=np.linspace(0,50,np.shape(periodicaFin)[0])
+xo=np.linspace(0,50,np.shape(periodicaFin)[1])
+xo, yo=np.meshgrid(xo,yo)
+fig=plt.figure()
+ax=fig.add_subplot(1,1,1, projection='3d')
+ax.plot_wireframe(xo,yo,periodicaFin)
+
+plt.title("Estado final placa periodica")
+ax.set_xlabel("x(m)")
+ax.set_ylabel("y(m)")
+ax.set_zlim(0,100)
+ax.set_zlabel("T(C°)")
+plt.savefig("periodicaFin.pdf")
 
 #### graficas de los promedios de temperatura
 
