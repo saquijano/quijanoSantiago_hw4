@@ -9,5 +9,8 @@ resultados_hw4.tex Plots_hw4.py:
 	python3 Plots_hw4.py		
 
 clean:
+	rm *.out
 	rm *.txt
 	rm *.pdf
+	rm *.log
+	rm *.aux
