@@ -68,7 +68,7 @@ int main()
 	
 	double tiempo=0;
 	int z=0;
-	//limites cerrados
+	//extremos fijos. todo lo llame con cerrados pero significa extremos fijos
 while(tiempo<(saltos*dt))
 {
 	double prom=0;
@@ -111,6 +111,7 @@ while(tiempo<(saltos*dt))
 	prome[z]=(prom/(n*n));
 	tiempo=tiempo+dt;
 	z=z+1;
+// primera grafica
 	if (z==2500)
 	{
 		ofstream cerradas1;
@@ -128,7 +129,7 @@ while(tiempo<(saltos*dt))
 		}
 		cerradas1.close();
 	}
-
+//segunda grafica
 	if (z==(5000))
 	{
 		ofstream cerradas2;
@@ -146,6 +147,7 @@ while(tiempo<(saltos*dt))
 		}
 		cerradas2.close();
 	}
+//ultima grafica
 	if (z==(saltos-3))
 	{
 		ofstream cerradasFin;
@@ -190,6 +192,7 @@ while(tiempo<(saltos*dt))
 			}
 		}
 	}
+//inicial grafica
 	ofstream inicialesLib;
 	inicialesLib.open("inicialesLib.txt");
 	for(int i=0;i<N;i++)
@@ -207,6 +210,7 @@ while(tiempo<(saltos*dt))
 
 	tiempo=0;
 	z=0;
+//iteraciones en tiempo
 while(tiempo<(saltos*dt))
 {
 	double prom=0;
@@ -216,6 +220,7 @@ while(tiempo<(saltos*dt))
 		{
 			disx=((i*dx)-centro)*((i*dx)-centro);
 			disy=((j*dy)-centro)*((j*dy)-centro);
+			//bordes igual a dato interno, es decir mas cerca de la barra
 			if(i==0)
 			{
 				pasa[i][j]=pasa[i+1][j];
@@ -259,9 +264,11 @@ while(tiempo<(saltos*dt))
 			pasa[i][j]=futu[i][j];
 		}
 	}
+//guardo mi valor promedio para cada instante antes de anvanzar en tiempo y contador
 	prome[z]=prom/(n*n);
 	tiempo=tiempo+dt;
 	z=z+1;
+//primera grafica
 	if (z==8000)
 	{
 		ofstream libres1;
@@ -279,7 +286,7 @@ while(tiempo<(saltos*dt))
 		}
 		libres1.close();
 	}
-
+//segunda grafica
 	if (z==(saltos/2))
 	{
 		ofstream libres2;
@@ -361,11 +368,13 @@ while(tiempo<(saltos*dt))
 
 	tiempo=0;
 	z=0;
+
+//avanzo muchas veces en el tiempo para crear las graficas
 while(tiempo<(saltos*dt))
 {
 	double prom=0;
 	for(int i=0;i<N;i++)
-	{
+	{	//bordes se igualan a valores del otro extremo de la placa en una posicion mas adentro
 		for(int j=0;j<N;j++)
 		{
 			disx=((i*dx)-centro)*((i*dx)-centro);
@@ -389,7 +398,7 @@ while(tiempo<(saltos*dt))
 			{
 				pasa[i][j]=pasa[i][j-N+2];
 				futu[i][j]=pasa[i][j];
-			}
+			}//siempre pongo datos de la barra en 100 antes de derivar
 			else if(sqrt(disx+disy)<5)
 			{
 				pasa[i][j]=100;
@@ -416,6 +425,7 @@ while(tiempo<(saltos*dt))
 	prome[z]=prom/(n*n);
 	tiempo=tiempo+dt;
 	z=z+1;
+//primera grafica de periocas
 	if (z==8000)
 	{
 		ofstream periodica1;
@@ -433,7 +443,7 @@ while(tiempo<(saltos*dt))
 		}
 		periodica1.close();
 	}
-
+//segunda grafica de periocas
 	if (z==(saltos/2))
 	{
 		ofstream periodica2;
@@ -452,6 +462,7 @@ while(tiempo<(saltos*dt))
 		periodica2.close();
 	}
 	
+//Ultima grafica de periodicas 
 	if (z==(saltos-3))
 	{
 		ofstream periodicaFin;

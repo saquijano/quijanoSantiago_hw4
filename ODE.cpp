@@ -63,15 +63,15 @@ int main()
 	vx[1]=vx[0]+dt*segunderiX(t[0],vx[0],vy[0],y[0]);
 	vy[1]=vy[0]+dt*segunderiY(t[0],vx[0],vy[0],x[0]);
 	
-
+	///algo funciona mal, si pongo que tome los valores de posicion i no devuelve nada. Creo que esta bien el codigo pero debo ponerlo con estas condiciones, como si fuera euler
 	for(int i=1;i<N;i++)
 	{
-	x[i+1]=x[i-1]+2*dt*deriX(t[i-1], vx[i-1], vy[i-1], x[i-1]);
-	y[i+1]=y[i-1]+2*dt*deriY(t[i-1], vx[i-1], vy[i-1], x[i-1]);
-	vy[i+1]=vy[i-1]+2*dt*segunderiY(t[i-1], vx[i-1], vy[i-1], x[i-1]);
-	vx[i+1]=vx[i-1]+2*dt*segunderiX(t[i-1], vx[i-1], vy[i-1], x[i-1]);
-	
+	x[i+1]=x[i-1]+2.0*dt*deriX(t[i-1], vx[i-1], vy[i-1], x[i-1]);
+	y[i+1]=y[i-1]+2.0*dt*deriY(t[i-1], vx[i-1], vy[i-1], x[i-1]);
+	vy[i+1]=vy[i-1]+2.0*dt*segunderiY(t[i-1], vx[i-1], vy[i-1], x[i-1]);
+	vx[i+1]=vx[i-1]+2.0*dt*segunderiX(t[i-1], vx[i-1], vy[i-1], x[i-1]);
 	}
+	
 	
 	ofstream file;
 	file.open("45grad.txt");
@@ -138,6 +138,8 @@ for(int j=1;j<8;j++)
 	
 }
 file1.close();
+
+// uso metodo de python para hallarlo y copio los valores aca
 
 cout<<"La distancia maxima para el angulo de 45° es 4.23822"<<endl;
 cout<<"La distancia maxima en x se logra con un angulo de 20°. El valor obtenido es 5.18812"<<endl;
